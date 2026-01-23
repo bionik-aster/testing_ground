@@ -87,7 +87,7 @@ q {
   font-family: Times New Roman, Times, sans-serif;
 }
 .splash{
-    font-family: 'minecraftia', 'Montserrat', 'Calibri', 'sans-serif';
+    font-family: 'minecraftia', 'Montserrat', 'Calibri', sans-serif;
     text-decoration: none;
     color: #d00;
     transition-delay: 0.2s;
@@ -130,5 +130,11 @@ q {
 }
 /* fonts */
 @font-face {
-    font-family: 'Comic Neue'; src: url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+  font-family: 'Comic Neue'; src: url('https://bionik-aster.github.io/fonts/ComicNeue-Regular.ttf');
+}
+@font-face {
+  font-family: 'minecraftia'; src: url('https://bionik-aster.github.io/fonts/Minecraftia-Regular.ttf');
+}
+@font-face{
+  font-family: 'ikibimi'; src: url('https://bionik-aster.github.io/fonts/AncientIkibimi-Regular.ttf');
 }
