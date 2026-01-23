@@ -113,6 +113,17 @@ q {
   padding-top: 1%;
 }
 
+/* a,b,c,d,e etc <div> styles */
+.sidediva {
+  border: 3px solid #070fed;
+  transition-property: border;
+  transition-duration: 500ms;
+  margin: 7.5px;
+}
+.sidediva:hover, .sidediva:focus {
+  border: 5px solid #6000d5;
+}
+
 /* CRT/DISPLAY SCREEN CSS */
 .crt {
   animation: textShadow 1.7s infinite;

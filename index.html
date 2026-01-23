@@ -7,18 +7,34 @@
         <meta name="description" content="Aster's shenanigans">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css">
-        <script src="toggletheme.js" type="text/javascript"></script>
         <script src="choose.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/bowser@2.7.0/es5.js"></script>
+        <script>
+            addEventListener('DOMContentLoaded', () => {
+                var result = bowser.getParser(window.navigator.userAgent)
+                document.getElementById('browser').innerHTML = result.parsedResult.browser.name;
+                document.getElementById('version').innerHTML = result.parsedResult.browser.version;
+                document.getElementById('os').innerHTML = result.parsedResult.os.name;
+                document.getElementById('platform').innerHTML = result.parsedResult.platform.type;
+            })
+        </script>
     </head>
     <body>
         <div class="layout">
             <div class="sidediv">
+                <div class="sidediva">
+                    <p>
+                        You are using <span id="browser"></span> version <span id="version"></span>
+                        on <span id="platform"></span> running on <span id="os"></span>.
+                    </p>
+                </div>
                 <div class="sidediva">
                     <h1>Heyo I'm Aster</h1>
                     <p>I'm a bit of a minor myself</p>
                     <p>And uh yeah have fun on this site</p>
                     <img> <!--current pfp-->
                 </div>
+                <br>
                 <div class="warning">
                     <h3>THIS SITE IS IN NALPHA.</h3>
                     <hr>
