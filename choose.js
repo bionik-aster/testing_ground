@@ -1,4 +1,4 @@
-import {fetchWithAErrors} from 'aerrors.js';
+import {fetchWithAErrors} from './aerrors.js';
 (async () => {await fetchWithAErrors('/api/data');})();
 function oldweb() {
     fetchWithAErrors('https://bionik-aster.github.io/index.html', {}, "text")
