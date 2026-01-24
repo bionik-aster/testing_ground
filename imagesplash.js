@@ -17,4 +17,4 @@ document.addEventListener('DOMContentLoaded', () => { // on the page's content l
     const image = document.getElementById('imagesplash'); // redesignates a local 'image' variable because its no longer in scope of old one
     image.addEventListener('click',imagefunc); // on the image clicked, call on imagefunc()
     imagefunc(); // initial load
-})
+});
