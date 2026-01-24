@@ -75,8 +75,21 @@ ul {
   list-style-type: none;
 }
 q {
-  font-size: 20px;
+  font-size: 0.75rem;
   font-family:'Times New Roman', Times, serif;
+}
+
+/* non-<div> styles */
+p.fineprint {
+  font-size: 0.8em;
+  color: #15767b;
+  transition-property:font-size,color;
+  transition-duration:300ms;
+  transition-delay:100ms;
+}
+p.fineprint:hover {
+  font-size: 1em;
+  color: #36d974;
 }
 
 /* random <div> styles */
@@ -128,6 +141,12 @@ q {
 .crt {
   animation: textShadow 1.7s infinite;
 }
+#display {
+  display:none;
+  margin-top: 10px;
+  border: 2px solid #f0f0f0;
+}
+
 /* fonts */
 @font-face {
   font-family: 'Comic Neue'; src: url('https://bionik-aster.github.io/fonts/ComicNeue-Regular.ttf');
