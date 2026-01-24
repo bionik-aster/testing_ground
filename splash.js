@@ -141,12 +141,13 @@ function cockandballs() {
         `oh boy new website`,
         `also try the older site at root!`,
         `neverending alpha since 2026`,
-        `covid was 6 yearsd ago??`,
+        `covid was 6 years ago??`,
         `caked up regiment`,
         `in this world, its milk or BE MILKED!`,
         `troodles is real`,
         `some of these splash texts have been here since like 2024 i kid you not`,
         `moving from stealing code from websites to learning code from stackoverflow`,
+        `hey kommit your splash code is kinda buns imma be real`
     ];
 
     var rText = Math.floor(Math.random() * messages.length);
