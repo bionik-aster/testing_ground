@@ -32,6 +32,17 @@
     text-shadow: 2.620876447383px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
   }
 }
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* base HTML */
 html {
   font-family: 'Comic Neue', Tahoma, Verdana, sans-serif;
@@ -91,6 +102,10 @@ p.fineprint:hover {
   font-size: 1em;
   color: #36d974;
 }
+#loading {
+  animation:blink 1.06s infinite;
+  display:none;
+}
 
 /* random <div> styles */
 .warning {
@@ -142,9 +157,10 @@ p.fineprint:hover {
   animation: textShadow 1.7s infinite;
 }
 #display {
+  width:60%; 
+  height:600px; 
+  border:none; 
   display:none;
-  margin-top: 10px;
-  border: 2px solid #f0f0f0;
 }
 
 /* fonts */

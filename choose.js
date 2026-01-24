@@ -1,44 +1,16 @@
-import { fetchWithAErrors } from './aerrors.js';
+const iframe = document.getElementById('display')
+const oldwebbtn = document.getElementById('oldwebbtn')
+const loading = document.getElementById('loading')
+oldwebbtn.addEventListener('click', () => {
+  if (iframe.style.display === 'block') {
+    iframe.style.display = 'none';
+    loading.style.display = 'none';
+  } else {
+    iframe.style.display = 'block';
+    loading.style.display = 'block';
 
-const display = document.getElementById('display');
-const button = document.getElementById('oldwebbtn');
+    iframe.src = 'https://bionik-aster.github.io/index.html';
 
-let cachedHtml = null;
-
-async function oldweb() {
-  // if display is displaying, stop display
-  if (display.style.display === 'block') {
-    display.style.display = 'none';
-    return;
+    iframe.onload = () => {loading.style.display = 'none';};
   }
-
-  // if cachedHtml isnt null then display
-  if (cachedHtml) {
-    display.style.display = 'block';
-    return;
-  }
-
-  // we're loading hold on
-  display.innerHTML = "<p>Loading...</p>";
-  display.style.display = 'block';
-
-  try {
-    const html = await fetchWithAErrors(
-      'https://bionik-aster.github.io/index.html',
-      {},
-      "text"
-    );
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    cachedHtml = doc.querySelector('body').innerHTML;
-
-    display.innerHTML = cachedHtml;
-  } catch (err) {
-    console.error("Failed to load older website:", err);
-    display.innerHTML = "<p>Failed to load older website.</p>";
-  }
-}
-
-// button to initiate?
-button.addEventListener('click', oldweb);
+});
