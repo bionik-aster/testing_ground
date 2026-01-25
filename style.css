@@ -44,7 +44,8 @@
   }
 }
 @keyframes move {
-  to {transform: translateX(-120%);}
+  from {transform: translateX(100%);}
+  to {transform: translateX(-100%);}
 }
 /* base HTML */
 html {
@@ -213,9 +214,11 @@ button:hover {
 .sdbcontent {
   transform: translateX(100%);
   display: inline-block;
-  width: 100%;
-  animation: move 15s linear infinite;
   white-space: nowrap;
+  animation: none;
+}
+.sdbcontent.scroll {
+  animation: move 15s linear infinite;
 }
 
 /* scrollbar CSS */

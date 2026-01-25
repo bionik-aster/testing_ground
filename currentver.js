@@ -24,6 +24,13 @@
     const el = document.getElementById("currentver");
     if (el) { // if element exists then insert
       el.textContent = `v${years}.${months}.${days}`;
+
+      const content = el.closest('.sdbcontent');
+      if (content) { // if content exists
+        content.classList.remove('scroll'); // remove existing scroll class
+        void content.offsetWidth; // reset offset width
+        content.classList.add('scroll'); // add back the scroll class ergo restarting animation with <span> included
+      }
     }
   }
 
