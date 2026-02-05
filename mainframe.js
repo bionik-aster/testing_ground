@@ -18,7 +18,16 @@ function appendError(text) {
     output.appendChild(p);
 }
 
-function appendHelp() {
+function appendWarn(text) {
+    const p = document.createElement('p');
+    const s = document.createElement('span');
+    s.style.color = 'yellow';
+    s.textContent = text;
+    p.appendChild('s');
+    output.appendChild('p');
+}
+
+function appendHelp(def) {
     const p = document.createElement('p');
 
     const cmds = [
@@ -27,22 +36,118 @@ function appendHelp() {
         ['open def', 'for default vercel'],
         ['arithmetic [operator] [operand [operand]', 'for arithmetic functions'],
         ['field echo [operand]', 'for text echoing'],
-        ['field reset', 'for output field reset']
+        ['field reset', 'for output field reset'],
+        ['field timestamp', 'for current time in UTC'],
+        ['field copy', 'to copy all outputs in the field']
+        ['help arithmetic', 'to see all operators in arithmetic'],
+        ['help star', 'to see all commands in star']
     ];
-    cmds.forEach(([cmd, desc],i) => {
-        p.appendChild(document.createTextNode('>'));
-        const b = document.createElement('b');
-        b.textContent = cmd;
-        p.appendChild(b);
+    const arcmds = [
+        ['+', 'for addition'],
+        ['-', 'for subtraction'],
+        ['*', 'for multiplication'],
+        ['/', 'for division'],
+        ['^', 'for exponentiation'],
+        ['%', 'for remainder of a division'],
+        ['avg', 'for mathematical mean between a and b'],
+        ['cmp', 'for mathematical comparison relative to a (outputs "<", ">", or "=")']
+    ];
+    const starcmds = [
+        ['ping', 'to send a reminder'],
+        ['align [left|center|right]', 'to realign output field'],
+        ['chaos', 'to do... something. idk']
+    ];
+    if (def === 'd') {
+        cmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
         
-        p.appendChild(document.createTextNode(` ${desc}`));
+            p.appendChild(document.createTextNode(` ${desc}`));
 
-        if (i < cmds.length - 1) {
-            p.appendChild(document.createElement('br'));
-        }
-    })
+            if (i < cmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+    }
+    else if (def === 'ar') {
+        arcmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
+        
+            p.appendChild(document.createTextNode(` ${desc}`));
+
+            if (i < arcmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+    }
+    else if (def === 'star') {
+        starcmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
+        
+            p.appendChild(document.createTextNode(` ${desc}`));
+
+            if (i < starcmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+    }
+    else if (def === 'all') {
+        cmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
+        
+            p.appendChild(document.createTextNode(` ${desc}`));
+
+            if (i < cmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+        arcmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
+        
+            p.appendChild(document.createTextNode(` ${desc}`));
+
+            if (i < arcmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+        starcmds.forEach(([cmd, desc],i) => {
+            p.appendChild(document.createTextNode('>'));
+            const b = document.createElement('b');
+            b.textContent = cmd;
+            p.appendChild(b);
+        
+            p.appendChild(document.createTextNode(` ${desc}`));
+
+            if (i < starcmds.length - 1) {
+                p.appendChild(document.createElement('br'));
+            }
+        });
+    }
 
     return p;
+}
+
+function alignSS(pos) {
+    if (pos !== "left" || pos !== "right" || pos !== "center") {
+        appendError('AError 997(ALIGN) - Stars unaligned');
+        console.error('AError 997(ALIGN) - Stars unaligned');
+    } else {
+        output.style.textAlign = pos;
+    }
 }
 
 function resetField() {
@@ -53,23 +158,29 @@ function arithmetic(op, a, b) {
     a = Number(a);
     b = Number(b);
 
-    if (isNaN(a)||isNaN(b)) return "Invalid operands";
+    if (isNaN(a)||isNaN(b)) return "Invalid operands"; // if a or b cant convert into numbers or dont exist say invalid numbers
 
     switch(op) {
-        case '+': return a + b;
-        case '-': return a - b;
-        case '*': return a * b;
-        case '/': return b !== 0 ? a / b : 'Division by zero';
-        case '^': return a ** b;
-        case '%': return a % b;
-        case 's': return ++a;
+        case '+': return a + b; // add
+        case '-': return a - b; // subtract
+        case '*': return a * b; // multiply
+        case '/': return b !== 0 ? a / b : 'Division by zero'; // if b isnt 0 continue with a/b else say division by 0
+        case '^': return a ** b; // exponentiation
+        case '%': return a % b; // modulus
+        case 's': return ++a; // dupe of 'S' in case psychopaths take the speed route
         case 'S': return ++a;
+        case 'avg': return (a + b) / 2; // mathematical mean
+        case 'cmp': if(a > b) {return '>';} else if (a < b) {return '<';} else {return '=';} // comparison relative to a
         default: return 'Invalid operator';
     }
 }
 
 function echoSS(el) {
     appendLine(el);
+    if (el === '') {
+        console.warn('AError 996 - No reverberation')
+        appendWarn('AError 996 - No reverberation')
+    }
 }
 
 inputEl.addEventListener('input', () => {
@@ -88,6 +199,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     const cinput = inputEl.value.trim();
     const parts = cinput.split(/\s+/);
+
     if (parts[0] === "arithmetic" && parts.length === 4) {
         const [, op, a, b] = parts;
         const result = arithmetic(op, a, b);
@@ -95,6 +207,14 @@ form.addEventListener('submit', (event) => {
         inputEl.value = 'arithmetic ';
         return;
     }
+
+    else if (parts[0] === "help") {
+        if (parts[1] === "arithmetic") {appendHelp('ar');}
+        else if (parts[1] === "all") {appendHelp('all');}
+        else if (parts[1] === "star") {appendHelp('star');}
+        else {appendHelp('d');}
+    }
+
     else if (parts[0] === "field") {
         if (parts[1] === "reset") {
             resetField(); 
@@ -108,10 +228,39 @@ form.addEventListener('submit', (event) => {
             inputEl.value = 'field echo ';
             return;
         }
+        else if (parts[1] === "timestamp") {
+            const time = new Date().toLocaleString();
+            appendLine(`Current time: ${time}`);
+            inputEl.value = 'field ';
+            return;
+        }
+        else if (parts[1] === "copy") {
+            const copytext = output.innerText;
+            copytext.select();
+            copytext.setSelectionRange(0,99999);
+            navigator.clipboard.writeText(copytext.value);
+            appendLine("Output copied to clipboard.");
+            inputEl.value = 'field ';
+            return;
+        }
+    }
+    else if (parts[0] === 'star') {
+        if (parts[1] === 'ping') {appendLine('You got this.')}
+        else if (parts[1] === 'align') {
+            const a = parts[2];
+            alignSS(a);
+            appendLine('Stars are realigned.');
+        }
+        else if (parts[1] === 'chaos') {
+            resetField();
+            appendWarn('hey is this supposed to be happening');
+            appendError('dunno but user probably entered something stupid');
+            appendWarn('fairs fairs');
+        }
     }
 
     const cmd = cinput.toLowerCase();
-    if (!cmd) {output.innerHTML = 'H for Help';}
+    if (!cmd) {appendLine("help for Help");}
     else if (cmd === 'open root') {
         window.open('https://asterroot.vercel.app','_blank','noopener,noreferrer');
         appendLine(`${cmd} successfully executed.`);
@@ -123,9 +272,6 @@ form.addEventListener('submit', (event) => {
     else if (cmd === 'open def') {
         window.open('https://asterirving.vercel.app/','_blank','noopener,noreferrer');
         appendLine(`${cmd} successfully executed.`);
-    }
-    else if (cmd === 'h') {
-        output.appendChild(appendHelp());
     }
     else {
         appendError('AError 997 - Faulty Starshell code');
