@@ -77,7 +77,7 @@ inputEl.addEventListener('input', () => {
     inputEl.style.height = inputEl.scrollHeight + 'px';
 });
 
-inputEl.addEventListener('keybown', (e) => {
+inputEl.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault(); 
         form.requestSubmit();
