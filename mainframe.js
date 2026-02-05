@@ -76,6 +76,7 @@ function appendHelp(def) {
     else if (def === 'all') {awaitingrender = [...cmds, ...arcmds, ...starcmds];}
     const renderedlist = renderCmdList(awaitingrender);
     output.appendChild(renderedlist);
+    return;
 }
 
 function alignSS(pos) {
