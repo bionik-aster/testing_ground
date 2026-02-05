@@ -3,6 +3,7 @@ so, long story short, i decided that the other website was BORING and kinda made
 # system_log
 |Version|  Log  |Known stuff-to-fix|
 |-------|-------|------------------|
+| av1.2 | StarShell 1.1.0 | succession operator requires 2 operands despite only taking the first |
 | av1.1 | launch of starshell 0.0.1 | bg image still (cant be arsed) |
 | av1.0 | Initial alpha launch<br> `<span>` in autoscroll fixed | `bgimg.png` is not the bgimg.png that I want |
 | NALPHA 0.9 | Autoscrolling element added<br> Custom scrollbars on nonmobile devices<br> responsive scaling from elements | `<span id="sdbcontent"></span>` snaps back before animation finishes |
