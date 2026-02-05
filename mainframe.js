@@ -147,10 +147,10 @@ form.addEventListener('submit', (event) => {
     }
 
     else if (parts[0] === "help") {
-        if (parts[1] === "arithmetic") {appendHelp('ar');}
-        else if (parts[1] === "all") {appendHelp('all');}
-        else if (parts[1] === "star") {appendHelp('star');}
-        else {appendHelp('d');}
+        if (parts[1] === "arithmetic") {appendHelp('ar'); return;}
+        else if (parts[1] === "all") {appendHelp('all'); return;}
+        else if (parts[1] === "star") {appendHelp('star'); return;}
+        else {appendHelp('d'); return;}
     }
 
     else if (parts[0] === "field") {
