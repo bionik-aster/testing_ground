@@ -3,6 +3,7 @@ so, long story short, i decided that the other website was BORING and kinda made
 # system_log
 |Version|  Log  |Known stuff-to-fix|
 |-------|-------|------------------|
+| av1.2.2 | praying this visual thing works | continued from av1.2 |
 | av1.2.1 | Fixed the quirk where failing to trail `mainframe` with a `/` resulted in neither the js or css working | continued from av1.2 |
 | av1.2 | StarShell 1.1.0 | succession operator requires 2 operands despite only taking the first |
 | av1.1 | launch of starshell 0.0.1 | bg image still (cant be arsed) |

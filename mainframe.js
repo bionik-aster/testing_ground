@@ -72,6 +72,11 @@ function echoSS(el) {
     appendLine(el);
 }
 
+inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = inputEl.scrollHeight + 'px';
+})
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const cinput = inputEl.value.trim();
