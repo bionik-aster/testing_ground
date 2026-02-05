@@ -75,7 +75,14 @@ function echoSS(el) {
 inputEl.addEventListener('input', () => {
     inputEl.style.height = 'auto';
     inputEl.style.height = inputEl.scrollHeight + 'px';
-})
+});
+
+inputEl.addEventListener('keybown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); 
+        form.requestSubmit();
+    }
+});
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
