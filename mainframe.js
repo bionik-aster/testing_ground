@@ -183,17 +183,19 @@ form.addEventListener('submit', (event) => {
         }
     }
     else if (parts[0] === 'star') {
-        if (parts[1] === 'ping') {appendLine('You got this.')}
+        if (parts[1] === 'ping') {appendLine('You got this.'); return;}
         else if (parts[1] === 'align') {
-            const a = parts[2];
+            let a = parts[2];
             alignSS(a);
             appendLine('Stars are realigned.');
+            return;
         }
         else if (parts[1] === 'chaos') {
             resetField();
             appendWarn('hey is this supposed to be happening');
             appendError('dunno but user probably entered something stupid');
             appendWarn('fairs fairs');
+            return;
         }
     }
 
