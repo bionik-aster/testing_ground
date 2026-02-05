@@ -27,9 +27,20 @@ function appendWarn(text) {
     output.appendChild('p');
 }
 
-function appendHelp(def) {
-    const p = document.createElement('p');
+function renderCmdList(list) {
+  const p = document.createElement('p');
+  list.forEach(([cmd, desc], i) => {
+    p.appendChild(document.createTextNode('>'));
+    const b = document.createElement('b');
+    b.textContent = cmd;
+    p.appendChild(b);
+    p.appendChild(document.createTextNode(` ${desc}`));
+    if (i < list.length - 1) p.appendChild(document.createElement('br'));
+  });
+  return p;
+}
 
+function appendHelp(def) {
     const cmds = [
         ['open root', 'for root vercel'],
         ['open gitroot', 'for root github'],
@@ -38,7 +49,7 @@ function appendHelp(def) {
         ['field echo [operand]', 'for text echoing'],
         ['field reset', 'for output field reset'],
         ['field timestamp', 'for current time in UTC'],
-        ['field copy', 'to copy all outputs in the field']
+        ['field copy', 'to copy all outputs in the field'],
         ['help arithmetic', 'to see all operators in arithmetic'],
         ['help star', 'to see all commands in star']
     ];
@@ -57,88 +68,14 @@ function appendHelp(def) {
         ['align [left|center|right]', 'to realign output field'],
         ['chaos', 'to do... something. idk']
     ];
-    if (def === 'd') {
-        cmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
 
-            if (i < cmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-    }
-    else if (def === 'ar') {
-        arcmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
-
-            if (i < arcmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-    }
-    else if (def === 'star') {
-        starcmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
-
-            if (i < starcmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-    }
-    else if (def === 'all') {
-        cmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
-
-            if (i < cmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-        arcmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
-
-            if (i < arcmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-        starcmds.forEach(([cmd, desc],i) => {
-            p.appendChild(document.createTextNode('>'));
-            const b = document.createElement('b');
-            b.textContent = cmd;
-            p.appendChild(b);
-        
-            p.appendChild(document.createTextNode(` ${desc}`));
-
-            if (i < starcmds.length - 1) {
-                p.appendChild(document.createElement('br'));
-            }
-        });
-    }
-
-    return p;
+    let awaitingrender = [];
+    if (def === 'd') {awaitingrender = cmds;}
+    else if (def === 'arithmetic') {awaitingrender = arcmds;}
+    else if (def === 'star') {awaitingrender = starcmds;}
+    else if (def === 'all') {awaitingrender = [...cmds, ...arcmds, ...starcmds];}
+    const renderedlist = renderCmdList(awaitingrender);
+    output.appendChild(renderedlist);
 }
 
 function alignSS(pos) {
