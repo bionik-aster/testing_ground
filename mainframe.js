@@ -71,7 +71,7 @@ function appendHelp(def) {
 
     let awaitingrender = [];
     if (def === 'd') {awaitingrender = cmds;}
-    else if (def === 'arithmetic') {awaitingrender = arcmds;}
+    else if (def === 'ar') {awaitingrender = arcmds;}
     else if (def === 'star') {awaitingrender = starcmds;}
     else if (def === 'all') {awaitingrender = [...cmds, ...arcmds, ...starcmds];}
     const renderedlist = renderCmdList(awaitingrender);
@@ -116,8 +116,11 @@ function arithmetic(op, a, b) {
 function echoSS(el) {
     appendLine(el);
     if (el === '') {
-        console.warn('AError 996 - No reverberation')
-        appendWarn('AError 996 - No reverberation')
+        console.warn('AError 996 - No reverberation');
+        appendWarn('AError 996 - No reverberation');
+    } else if (!el) {
+        console.warn('AError 996 - No reverberation');
+        appendWarn('AError 996 - No reverberation');
     }
 }
 
@@ -174,9 +177,7 @@ form.addEventListener('submit', (event) => {
         }
         else if (parts[1] === "copy") {
             const copytext = output.innerText;
-            copytext.select();
-            copytext.setSelectionRange(0,99999);
-            navigator.clipboard.writeText(copytext.value);
+            navigator.clipboard.writeText(copytext);
             appendLine("Output copied to clipboard.");
             inputEl.value = 'field ';
             return;
