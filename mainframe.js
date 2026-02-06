@@ -23,8 +23,8 @@ function appendWarn(text) {
     const s = document.createElement('span');
     s.style.color = 'yellow';
     s.textContent = text;
-    p.appendChild('s');
-    output.appendChild('p');
+    p.appendChild(s);
+    output.appendChild(p);
 }
 
 function renderCmdList(list) {
@@ -60,6 +60,7 @@ function appendHelp(def) {
         ['/', 'for division'],
         ['^', 'for exponentiation'],
         ['%', 'for remainder of a division'],
+        ['s or S','for successor function'],
         ['avg', 'for mathematical mean between a and b'],
         ['cmp', 'for mathematical comparison relative to a (outputs "<", ">", or "=")']
     ];
@@ -116,11 +117,8 @@ function arithmetic(op, a, b) {
 function echoSS(el) {
     appendLine(el);
     if (el === '') {
-        console.warn('AError 996 - No reverberation');
-        appendWarn('AError 996 - No reverberation');
-    } else if (!el) {
-        console.warn('AError 996 - No reverberation');
-        appendWarn('AError 996 - No reverberation');
+        console.warn('AError 996 - No reverberation (Null echo)');
+        appendWarn('AError 996 - No reverberation (Null echo)');
     }
 }
 
