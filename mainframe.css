@@ -27,3 +27,10 @@ textarea {
 .screen-title {
     padding-bottom: 0.5rem;
 }
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+a:hover {
+    text-shadow:1px 1px 5px #fff, 1px 1px 5px #ccc;
+}
