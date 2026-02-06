@@ -23,8 +23,8 @@ function appendWarn(text) {
     const s = document.createElement('span');
     s.style.color = 'yellow';
     s.textContent = text;
-    p.appendChild('s');
-    output.appendChild('p');
+    p.appendChild(s);
+    output.appendChild(p);
 }
 
 function renderCmdList(list) {
@@ -60,6 +60,7 @@ function appendHelp(def) {
         ['/', 'for division'],
         ['^', 'for exponentiation'],
         ['%', 'for remainder of a division'],
+        ['s or S','for successor function'],
         ['avg', 'for mathematical mean between a and b'],
         ['cmp', 'for mathematical comparison relative to a (outputs "<", ">", or "=")']
     ];
@@ -71,7 +72,7 @@ function appendHelp(def) {
 
     let awaitingrender = [];
     if (def === 'd') {awaitingrender = cmds;}
-    else if (def === 'arithmetic') {awaitingrender = arcmds;}
+    else if (def === 'ar') {awaitingrender = arcmds;}
     else if (def === 'star') {awaitingrender = starcmds;}
     else if (def === 'all') {awaitingrender = [...cmds, ...arcmds, ...starcmds];}
     const renderedlist = renderCmdList(awaitingrender);
@@ -80,11 +81,12 @@ function appendHelp(def) {
 }
 
 function alignSS(pos) {
-    if (pos !== "left" || pos !== "right" || pos !== "center") {
+    posi = pos.toLowerCase();
+    if (posi !== "left" && posi !== "right" && posi !== "center") {
         appendError('AError 997(ALIGN) - Stars unaligned');
         console.error('AError 997(ALIGN) - Stars unaligned');
     } else {
-        output.style.textAlign = pos;
+        output.style.textAlign = posi;
     }
 }
 
@@ -116,8 +118,8 @@ function arithmetic(op, a, b) {
 function echoSS(el) {
     appendLine(el);
     if (el === '') {
-        console.warn('AError 996 - No reverberation')
-        appendWarn('AError 996 - No reverberation')
+        console.warn('AError 996 - No reverberation (Null echo)');
+        appendWarn('AError 996 - No reverberation (Null echo)');
     }
 }
 
@@ -147,10 +149,10 @@ form.addEventListener('submit', (event) => {
     }
 
     else if (parts[0] === "help") {
-        if (parts[1] === "arithmetic") {appendHelp('ar');}
-        else if (parts[1] === "all") {appendHelp('all');}
-        else if (parts[1] === "star") {appendHelp('star');}
-        else {appendHelp('d');}
+        if (parts[1] === "arithmetic") {appendHelp('ar'); return;}
+        else if (parts[1] === "all") {appendHelp('all'); return;}
+        else if (parts[1] === "star") {appendHelp('star'); return;}
+        else {appendHelp('d'); return;}
     }
 
     else if (parts[0] === "field") {
@@ -174,26 +176,26 @@ form.addEventListener('submit', (event) => {
         }
         else if (parts[1] === "copy") {
             const copytext = output.innerText;
-            copytext.select();
-            copytext.setSelectionRange(0,99999);
-            navigator.clipboard.writeText(copytext.value);
+            navigator.clipboard.writeText(copytext);
             appendLine("Output copied to clipboard.");
             inputEl.value = 'field ';
             return;
         }
     }
     else if (parts[0] === 'star') {
-        if (parts[1] === 'ping') {appendLine('You got this.')}
+        if (parts[1] === 'ping') {appendLine('You got this.'); return;}
         else if (parts[1] === 'align') {
-            const a = parts[2];
+            let a = parts[2];
             alignSS(a);
             appendLine('Stars are realigned.');
+            return;
         }
         else if (parts[1] === 'chaos') {
             resetField();
             appendWarn('hey is this supposed to be happening');
             appendError('dunno but user probably entered something stupid');
             appendWarn('fairs fairs');
+            return;
         }
     }
 
