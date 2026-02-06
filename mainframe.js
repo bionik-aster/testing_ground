@@ -81,11 +81,12 @@ function appendHelp(def) {
 }
 
 function alignSS(pos) {
-    if (pos !== "left" || pos !== "right" || pos !== "center") {
+    posi = pos.toLowerCase();
+    if (posi !== "left" && posi !== "right" && posi !== "center") {
         appendError('AError 997(ALIGN) - Stars unaligned');
         console.error('AError 997(ALIGN) - Stars unaligned');
     } else {
-        output.style.textAlign = pos;
+        output.style.textAlign = posi;
     }
 }
 
