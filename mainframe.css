@@ -16,13 +16,29 @@ textarea {
     font-size: 1rem;
     width: 100vw;
 }
+.cmd-form {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+.cmd-label {
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+    color: #ffffff;
+    white-space: nowrap;
+}
 .cmd-input {
-  resize: none;
-  overflow: hidden;
-  width: 100%;
-  font-family: 'Consolas', monospace;
-  white-space: pre-wrap;
-  word-break: break-word;
+    flex: 1;
+    resize: none;
+    overflow: hidden;
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    color: #ffffff;
 }
 .screen-title {
     padding-bottom: 0.5rem;
