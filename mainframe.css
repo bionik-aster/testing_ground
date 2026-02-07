@@ -40,6 +40,7 @@ textarea {
     border: none;
     outline: none;
     color: #ffffff;
+    padding: 0px;
 }
 .screen-title {
     padding-bottom: 0.5rem;
