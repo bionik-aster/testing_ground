@@ -147,7 +147,15 @@ function cockandballs() {
         `troodles is real`,
         `some of these splash texts have been here since like 2024 i kid you not`,
         `moving from stealing code from websites to learning code from stackoverflow`,
-        `hey kommit your splash code is kinda buns imma be real`
+        `hey kommit your splash code is kinda buns imma be real`,
+        `i love you so much C you don't even know`,
+        `found my will to live`,
+        `i sure hope this eternity doesn't end like the others`,
+        `Object, you go left! Lucky, you go right! Together we are, TAC!!`,
+        `fuckass cornball btw`,
+        `youve got mail`,
+        `MS DOS is not the second MS OS its the first`,
+        `let that sink in`
     ];
 
     var rText = Math.floor(Math.random() * messages.length);
