@@ -23,16 +23,17 @@ textarea {
 }
 .cmd-label {
     font-family: 'Consolas', monospace;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #ffffff;
     white-space: nowrap;
+    margin-right: 0.3rem;
 }
 .cmd-input {
     flex: 1;
     resize: none;
     overflow: hidden;
     font-family: 'Consolas', monospace;
-    font-size: 1rem;
+    font-size: 1.1rem;
     white-space: pre-wrap;
     word-break: break-word;
     background-color: #000000;
