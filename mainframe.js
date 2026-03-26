@@ -49,6 +49,7 @@ function appendHelp(def) {
         ['field echo [operand]', 'for text echoing'],
         ['field reset', 'for output field reset'],
         ['field timestamp', 'for current time in UTC'],
+        ['field countup', 'for time since last incident'],
         ['field copy', 'to copy all outputs in the field'],
         ['help arithmetic', 'to see all operators in arithmetic'],
         ['help star', 'to see all commands in star']
@@ -178,6 +179,18 @@ form.addEventListener('submit', (event) => {
             const copytext = output.innerText;
             navigator.clipboard.writeText(copytext);
             appendLine("Output copied to clipboard.");
+            inputEl.value = 'field ';
+            return;
+        }
+        else if (parts[1] === "countup") {
+            const time = new Date();
+            const timeSinceLast = new Date(2026,2,24,16,27,23,112);
+            var disTime = time - timeSinceLast;
+            var days = Math.floor(disTime / (1000 * 60 * 60 * 24)); 
+            var hours = Math.floor((disTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+            var minutes = Math.floor((disTime % (1000 * 60 * 60)) / (1000 * 60)); 
+            var seconds = Math.floor((disTime % (1000 * 60)) / 1000); 
+            console.log(`${days} days, ${hours}:${minutes}:${seconds} (HH:MM:SS)`);
             inputEl.value = 'field ';
             return;
         }
