@@ -190,7 +190,7 @@ form.addEventListener('submit', (event) => {
             var hours = Math.floor((disTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
             var minutes = Math.floor((disTime % (1000 * 60 * 60)) / (1000 * 60)); 
             var seconds = Math.floor((disTime % (1000 * 60)) / 1000); 
-            console.log(`${days} days, ${hours}:${minutes}:${seconds} (HH:MM:SS)`);
+            appendLine(`${days} days, ${hours}:${minutes}:${seconds} (HH:MM:SS)`);
             inputEl.value = 'field ';
             return;
         }
