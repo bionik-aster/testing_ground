@@ -124,6 +124,8 @@ function arithmetic(op, a, b) {
             b = stored_vars_content[i];
         }
     }
+    a = Number(a);
+    b = Number(b);
 
     if (op === 's') { //operator strictly equals to s? then...
         return !isNaN(a) ? a + 1 : 'Invalid operand'; //return a + 1 given a is a number, else return Invalid operand
