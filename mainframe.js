@@ -8,7 +8,7 @@ function appendLine(text, options = {}) {
     const p = document.createElement('p');
     if (options.html === true && text instanceof Node) {p.appendChild(text);}
     else {
-        let text = String(text ?? '');
+        text = String(text ?? '');
         let stext = text.split(/\s+/); //split all text eg "Hello World!" = ["Hello","World!"]
         for (let i = 0; i < stext.length; i++) {
             for (let j = 0; j < stored_vars.length; j++) {
