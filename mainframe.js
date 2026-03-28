@@ -1,11 +1,22 @@
 const form = document.querySelector('#cmdform');
 const inputEl = document.getElementById('commandInput');
 const output = document.getElementById('output');
+let stored_vars = [];
+let stored_vars_content = [];
 
 function appendLine(text, options = {}) {
     const p = document.createElement('p');
     if (options.html === true) {p.appendChild(text);} 
-    else {p.textContent = `>${text}`;}
+    else {
+        let stext = text.split(/\s+/); //split all text eg "Hello World!" = ["Hello","World!"]
+        for (let i = 0; i < stext.length; i++) { //loop until stext[i] doesnt exist
+            if (stext[i] === '$' + stored_vars[i]) { //checks individual items for variables headed with $variable
+                stext[i] = stored_vars_content[i]; //if so, that item is changed to the variable's content
+            }
+        }
+        let recombi_text = Array.join(" ");
+        p.textContent = `>${recombi_text}`;
+    }
     output.appendChild(p);
 }
 
@@ -84,7 +95,7 @@ function appendHelp(def) {
 }
 
 function alignSS(pos) {
-    posi = pos.toLowerCase();
+    let posi = pos.toLowerCase();
     if (posi !== "left" && posi !== "right" && posi !== "center") {
         appendError('AError 997(ALIGN) - Stars unaligned');
         console.error('AError 997(ALIGN) - Stars unaligned');
@@ -98,12 +109,16 @@ function resetField() {
 }
 
 function arithmetic(op, a, b) {
+    op = op.toLowerCase();
+    if (op === 's') { //operator strictly equals to s? then...
+        a = Number(a); //evaluate a
+        return !isNaN(a) ? a + 1 : 'Invalid operand'; //return a + 1 given a is a number, else return Invalid operand
+    }
+
     a = Number(a);
     b = Number(b);
-    op = op.toLowerCase();
 
-    if (!isNaN(a) && op == 's') return ++a; //succession operator in action
-    else if (isNaN(a)||isNaN(b)) return "Invalid operands"; //triggers only when operator is not s
+    if (isNaN(a)||isNaN(b)) return "Invalid operands"; //triggers only when operator is not s
 
     switch(op) {
         case '+': return a + b; // add
@@ -195,6 +210,38 @@ form.addEventListener('submit', (event) => {
             appendLine(`${days} days, ${hours}:${minutes}:${seconds} (HH:MM:SS)`);
             inputEl.value = 'field ';
             return;
+        }
+        else if (parts[1] === "var") {
+            if (parts[2] === "store") {
+                for (let i = 0; i < stored_vars.length; i++) {
+                    if (!stored_vars[i]) {
+                        stored_vars[i] = parts[3];
+                        stored_vars[i] = parts[4];
+                        appendLine(`${parts[3]} has been assigned value ${parts[4]}`);
+                        break;
+                    }
+                }
+                inputEl.value = 'field ';
+                return;
+            }
+            else if (parts[2] === "remove") {
+                let rem_complete = false;
+                for (let i = 0; i < stored_vars.length; i++) {
+                    if (parts[3] === stored_vars[i]) {
+                        stored_vars[i] = null;
+                        stored_vars_content[i] = null;
+                        appendLine(`${parts[3]} has been removed as a variable.`);
+                        rem_complete = true;
+                        break;
+                    }
+                }
+                if (rem_complete) {
+                    return;
+                } else {
+                    appendWarn(`${parts[3]} does not exist as variable!`);
+                    return;
+                }
+            }
         }
     }
     else if (parts[0] === 'star') {
