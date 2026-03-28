@@ -226,7 +226,7 @@ form.addEventListener('submit', (event) => {
                         stored_vars[i] = parts[3];
                         stored_vars_content[i] = stringything;
                         appendLine(`${parts[3]} has been assigned value ${stringything}`);
-                        let assignmentdone = true;
+                        assignmentdone = true;
                         break;
                     }
                 }
