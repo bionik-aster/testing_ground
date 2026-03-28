@@ -6,12 +6,16 @@ let stored_vars_content = new Array(35).fill(null);
 
 function appendLine(text, options = {}) {
     const p = document.createElement('p');
-    if (options.html === true) {p.appendChild(text);} 
+    if (options.html === true && text instanceof Node) {p.appendChild(text);}
     else {
+        let text = String(text ?? '');
         let stext = text.split(/\s+/); //split all text eg "Hello World!" = ["Hello","World!"]
-        for (let i = 0; i < stext.length; i++) { //loop until stext[i] doesnt exist
-            if (stext[i] === '$' + stored_vars[i]) { //checks individual items for variables headed with $variable
-                stext[i] = stored_vars_content[i]; //if so, that item is changed to the variable's content
+        for (let i = 0; i < stext.length; i++) {
+            for (let j = 0; j < stored_vars.length; j++) {
+                if (stext[i] === '$' + stored_vars[j]) {
+                    stext[i] = stored_vars_content[j];
+                    break;
+                }
             }
         }
         let recombi_text = ""; 
@@ -66,6 +70,7 @@ function appendHelp(def) {
         ['field echo [operand]', 'for text echoing'],
         ['field var store [varname] [varstore]', 'for storing a custom variable'],
         ['field var remove [varname]', 'for removing a custom variable'],
+        ['field var checkstore', 'to check all available variables'],
         ['field reset', 'for output field reset'],
         ['field timestamp', 'for current time in UTC'],
         ['field countup', 'for time since last incident'],
@@ -116,11 +121,11 @@ function resetField() {
 
 function arithmetic(op, a, b) {
     op = op.toLowerCase();
-    for (i = 0; i < stored_vars.length; i++) {
+    for (let i = 0; i < stored_vars.length; i++) {
         if (a === "$" + stored_vars[i] && !isNaN(Number(stored_vars_content[i]))) {
             a = stored_vars_content[i];
         }
-        else if (b === "$" + stored_vars[i] && !isNaN(Number(stored_vars_content[i]))) {
+        if (b === "$" + stored_vars[i] && !isNaN(Number(stored_vars_content[i]))) {
             b = stored_vars_content[i];
         }
     }
@@ -196,7 +201,7 @@ form.addEventListener('submit', (event) => {
         else if (parts[1] === "echo") {
             const el = parts.slice(2).join(' ');
             echoSS(el);
-            inputEl.value = 'field echo ';
+            inputEl.value = 'field ';
             return;
         }
         else if (parts[1] === "timestamp") {
@@ -228,13 +233,24 @@ form.addEventListener('submit', (event) => {
             if (parts[2] === "store") {
                 let assignmentdone = false;
                 let stringything = parts.slice(4).join(' ');
+                let found = false;
                 for (let i = 0; i < stored_vars.length; i++) {
-                    if (!stored_vars[i]) {
-                        stored_vars[i] = parts[3];
+                    if (stored_vars[i] === parts[3]) {
                         stored_vars_content[i] = stringything;
-                        appendLine(`${parts[3]} has been assigned value ${stringything}`);
-                        assignmentdone = true;
+                        appendLine(`${parts[3]} updated to ${stringything}`);
+                        found = true;
                         break;
+                    }
+                }
+                if (!found) {
+                    for (let i = 0; i < stored_vars.length; i++) {
+                        if (!stored_vars[i]) {
+                            stored_vars[i] = parts[3];
+                            stored_vars_content[i] = stringything;
+                            appendLine(`${parts[3]} assigned ${stringything}`);
+                            found = true;
+                            break;
+                        }
                     }
                 }
                 if (!assignmentdone) {
@@ -255,15 +271,18 @@ form.addEventListener('submit', (event) => {
                     }
                 }
                 if (rem_complete) {
+                    inputEl.value = 'field ';
                     return;
                 } else {
                     appendWarn(`${parts[3]} does not exist as variable!`);
+                    inputEl.value = 'field ';
                     return;
                 }
             }
             else if (parts[2] === "checkstore") {
                 appendLine(`Stored: ${stored_vars}`);
-                appendLine(`Content: ${stored_vars_content}`)
+                appendLine(`Content: ${stored_vars_content}`);
+                inputEl.value = 'field ';
                 return;
             }
         }
