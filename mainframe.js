@@ -116,13 +116,18 @@ function resetField() {
 
 function arithmetic(op, a, b) {
     op = op.toLowerCase();
-    if (op === 's') { //operator strictly equals to s? then...
-        a = Number(a); //evaluate a
-        return !isNaN(a) ? a + 1 : 'Invalid operand'; //return a + 1 given a is a number, else return Invalid operand
+    for (i = 0; i < stored_vars.length; i++) {
+        if (a === "$" + stored_vars[i] && !isNaN(Number(stored_vars_content[i]))) {
+            a = stored_vars_content[i];
+        }
+        else if (b === "$" + stored_vars[i] && !isNaN(Number(stored_vars_content[i]))) {
+            b = stored_vars_content[i];
+        }
     }
 
-    a = Number(a);
-    b = Number(b);
+    if (op === 's') { //operator strictly equals to s? then...
+        return !isNaN(a) ? a + 1 : 'Invalid operand'; //return a + 1 given a is a number, else return Invalid operand
+    }
 
     if (isNaN(a)||isNaN(b)) return "Invalid operands"; //triggers only when operator is not s
 
@@ -290,6 +295,10 @@ form.addEventListener('submit', (event) => {
     }
     else if (cmd === 'open def') {
         window.open('https://asterirving.vercel.app/','_blank','noopener,noreferrer');
+        appendLine(`${cmd} successfully executed.`);
+    }
+    else if (cmd === 'open github') {
+        window.open('https://github.com/bionik-aster/testing_ground','_blank','noopener,noreferrer');
         appendLine(`${cmd} successfully executed.`);
     }
     else {
