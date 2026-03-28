@@ -1,8 +1,8 @@
 const form = document.querySelector('#cmdform');
 const inputEl = document.getElementById('commandInput');
 const output = document.getElementById('output');
-let stored_vars = [];
-let stored_vars_content = [];
+let stored_vars = new Array(35).fill(null);
+let stored_vars_content = new Array(35).fill(null);
 
 function appendLine(text, options = {}) {
     const p = document.createElement('p');
@@ -219,14 +219,20 @@ form.addEventListener('submit', (event) => {
         }
         else if (parts[1] === "var") {
             if (parts[2] === "store") {
+                let assignmentdone = false;
+                let stringything = parts.slice(4).join(' ');
                 for (let i = 0; i < stored_vars.length; i++) {
                     if (!stored_vars[i]) {
                         stored_vars[i] = parts[3];
-                        stored_vars_content[i] = parts[4];
-                        appendLine(`${parts[3]} has been assigned value ${parts[4]}`);
+                        stored_vars_content[i] = stringything;
+                        appendLine(`${parts[3]} has been assigned value ${stringything}`);
+                        let assignmentdone = true;
                         break;
                     }
                 }
+                if (!assignmentdone) {
+                    appendError(`${parts[3]} cannot be assigned; there's too many variables!`);
+                }    
                 inputEl.value = 'field ';
                 return;
             }
@@ -247,6 +253,11 @@ form.addEventListener('submit', (event) => {
                     appendWarn(`${parts[3]} does not exist as variable!`);
                     return;
                 }
+            }
+            else if (parts[2] === "checkstore") {
+                appendLine(`Stored: ${stored_vars}`);
+                appendLine(`Content: ${stored_vars_content}`)
+                return;
             }
         }
     }
