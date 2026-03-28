@@ -216,7 +216,7 @@ form.addEventListener('submit', (event) => {
                 for (let i = 0; i < stored_vars.length; i++) {
                     if (!stored_vars[i]) {
                         stored_vars[i] = parts[3];
-                        stored_vars[i] = parts[4];
+                        stored_vars_content[i] = parts[4];
                         appendLine(`${parts[3]} has been assigned value ${parts[4]}`);
                         break;
                     }
