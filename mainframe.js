@@ -14,7 +14,13 @@ function appendLine(text, options = {}) {
                 stext[i] = stored_vars_content[i]; //if so, that item is changed to the variable's content
             }
         }
-        let recombi_text = Array.join(" ");
+        let recombi_text = ""; 
+        for (let i = 0; i < stext.length; i++) {
+            recombi_text += stext[i];
+            if (i < stext.length - 1) { //if the counter is 1 less than the length of the text array, then
+                recombi_text += " "; //add a whitespace (aka add whitespace inbetween words)
+            }
+        }
         p.textContent = `>${recombi_text}`;
     }
     output.appendChild(p);
