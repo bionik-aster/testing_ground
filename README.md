@@ -3,7 +3,8 @@ so, long story short, i decided that the other website was BORING and kinda made
 # system_log
 |Version|  Log  |Known stuff-to-fix|
 |-------|-------|------------------|
-| av1.2.6 | Starshell 1.3.2 | continued from av1.2 |
+| av1.2.7 | StarShell 1.4.0<br> `s` operators are no longer case sensitive<br> `s` no longer requires two operands | bg img |
+| av1.2.6 | StarShell 1.3.2 | continued from av1.2 |
 | av1.2.5 | StarShell 1.3.1<br> `[Home]` and `[Refresh]` exist | continued from av1.2 |
 | av1.2.4 | StarShell 1.3.0<br> `star` commands and new `field` commands | continued from av1.2 |
 | av1.2.3 | newline prevented on `[enter]`<br> newline only when `[shift] + [enter]` | continued from av1.2 |

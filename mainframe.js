@@ -47,6 +47,8 @@ function appendHelp(def) {
         ['open def', 'for default vercel'],
         ['arithmetic [operator] [operand [operand]', 'for arithmetic functions'],
         ['field echo [operand]', 'for text echoing'],
+        ['field var store [varname] [varstore]', 'for storing a custom variable'],
+        ['field var remove [varname]', 'for removing a custom variable'],
         ['field reset', 'for output field reset'],
         ['field timestamp', 'for current time in UTC'],
         ['field countup', 'for time since last incident'],
@@ -98,8 +100,10 @@ function resetField() {
 function arithmetic(op, a, b) {
     a = Number(a);
     b = Number(b);
+    op = op.toLowerCase();
 
-    if (isNaN(a)||isNaN(b)) return "Invalid operands"; // if a or b cant convert into numbers or dont exist say invalid numbers
+    if (!isNaN(a) && op == 's') return ++a; //succession operator in action
+    else if (isNaN(a)||isNaN(b)) return "Invalid operands"; //triggers only when operator is not s
 
     switch(op) {
         case '+': return a + b; // add
@@ -108,8 +112,6 @@ function arithmetic(op, a, b) {
         case '/': return b !== 0 ? a / b : 'Division by zero'; // if b isnt 0 continue with a/b else say division by 0
         case '^': return a ** b; // exponentiation
         case '%': return a % b; // modulus
-        case 's': return ++a; // dupe of 'S' in case psychopaths take the speed route
-        case 'S': return ++a;
         case 'avg': return (a + b) / 2; // mathematical mean
         case 'cmp': if(a > b) {return '>';} else if (a < b) {return '<';} else {return '=';} // comparison relative to a
         default: return 'Invalid operator';
