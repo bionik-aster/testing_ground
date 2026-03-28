@@ -238,6 +238,7 @@ form.addEventListener('submit', (event) => {
                     if (stored_vars[i] === parts[3]) {
                         stored_vars_content[i] = stringything;
                         appendLine(`${parts[3]} updated to ${stringything}`);
+                        assignmentdone = true;
                         found = true;
                         break;
                     }
@@ -248,6 +249,7 @@ form.addEventListener('submit', (event) => {
                             stored_vars[i] = parts[3];
                             stored_vars_content[i] = stringything;
                             appendLine(`${parts[3]} assigned ${stringything}`);
+                            assignmentdone = true;
                             found = true;
                             break;
                         }
