@@ -65,6 +65,7 @@ function appendHelp(def) {
     const cmds = [
         ['open root', 'for root vercel'],
         ['open gitroot', 'for root github'],
+        ['open github', 'for github repo'],
         ['open def', 'for default vercel'],
         ['arithmetic [operator] [operand [operand]', 'for arithmetic functions'],
         ['field echo [operand]', 'for text echoing'],
@@ -219,7 +220,7 @@ form.addEventListener('submit', (event) => {
         }
         else if (parts[1] === "countup") {
             const time = new Date();
-            const timeSinceLast = new Date(2026,2,24,16,27,23,112);
+            const timeSinceLast = new Date(2026,2,28,8,57,0,0);
             var disTime = time - timeSinceLast;
             var days = Math.floor(disTime / (1000 * 60 * 60 * 24)); 
             var hours = Math.floor((disTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
