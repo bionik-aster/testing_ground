@@ -8,9 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css">
         <script src="choose.js" type="module"></script>
+        <script src="bgupdate.js" type="text/javascript"></script>
         <script src="currentver.js" type="text/javascript" defer></script>
         <script src="imagesplash.js" type="text/javascript"></script>
         <script src="https://unpkg.com/bowser@2.7.0/es5.js"></script>
+        <script src="text.js" type="text/javascript"></script>
+        <script src="load.js" type="text/javascript"></script>
         <script>
             addEventListener('DOMContentLoaded', () => {
                 var result = bowser.getParser(window.navigator.userAgent)
@@ -22,7 +25,22 @@
         </script>
     </head>
     <body>
-        <div class="layout">
+        <div id="ls" class="loadingscreen">
+            <p class="terminal">AsterLP StarShell/derivative PowerStar [Version Altair]</p>
+            <br>
+            <p class="terminal">(c) Aster Irving. All Lights Reserved.</p>
+            <br>
+            <p class="terminal">CC BY-NC-SA 4.0 Int</p>
+            <br>
+            <p class="terminal" id="loading-command">></p><span class="blinker" id="blink1"></span>
+            <br>
+            <p class="terminal" id="loading-response"></p>
+            <br>
+            <p style="display:none;" class="terminal" id="loading-command2">></p><span class="blinker" id="blink2" style="display:none;"></span>
+            <br>
+            <p class="terminal" id="loading-success"></p>
+        </div>
+        <div id="lo" class="layout">
             <div class="sidediv">
                 <div class="sidediva">
                     <p>
@@ -31,14 +49,14 @@
                     </p>
                 </div>
                 <div class="sidediva">
-                    <h1>AsterOS v14</h1>
+                    <h1>AsterOS v15</h1>
                     <p class="fineprint">Aster Irving &copy; MMXXVI Not A Corporation</p>
                     <p class="fineprint">All Lights Reserved (CC BY-NC-SA 4.0 Int)</p>
                     <img id="imagesplash" height="256"> <!--loading pfp from images-->
                 </div>
                 <br>
                 <div class="warning">
-                    <p>this site is in v.Alpha 1.2.5</p>
+                    <p>this site is in v.Alpha 1.5.0</p>
                     <p>expect bugs and shitty code</p>
                 </div>
                 <div class="sidedivb">
@@ -47,7 +65,7 @@
                     </p>
                 </div>
                 <div class="sidediva">
-                    <p>nah im sending yo ahh back</p>
+                    <p>hi im asterLP</p>
                     <ul>
                         <li><a href="https://asterroot.vercel.app/">vercel</a></li>
                         <li><a href="https://bionik-aster.github.io/">github</a></li>
@@ -61,28 +79,26 @@
                     <script src="splash.js"></script>
                 </div>
                 <div class="contentb">
-                    <h1>introduction</h1>
+                    <h1>salutations</h1>
+                    <p>hello hello whoever is reading this</p>
                     <br>
+                    <p>im aster, one of many</p>
                     <p>
-                        my name's aster (or iris idm),
-                        and this is a little website i made!
-                    </p>
-                    <p>
-                        i wouldnt say im good at coding or anything since most of my knowledge is temporary and
-                        frankly taken from the internet
-                    </p>
-                    <p>
-                        nonetheless im taking CS for my GCSE and so far i havent regretted my choice unlike
-                        geography and RE
+                        this website is, well, unfinished, to say the least, given the god-awful
+                        amount of abysmal code you might see if you go to devtools
                     </p>
                     <br>
                     <p>
-                        check out /mainframe/ its pretty cool as well heh
+                        as a matter of fact im just terrible at coding but what can you do eh
+                    </p>
+                    <br>
+                    <p>
+                        regardless, welcome to my humble little corner of the internet dear stranger
                     </p>
                 </div>
                 <iframe id="display" class="crt"></iframe>
                 <p id="loading">Loading...</p>
-                <button id="oldwebbtn">Older website</button>
+                <button id="oldwebbtn">asterroot.verel.app</button>
             </div>
         </div>
     </body>
