@@ -3,6 +3,7 @@ so, long story short, i decided that the other website was BORING and kinda made
 # system_log
 |Version|  Log  |Known stuff-to-fix|
 |-------|-------|------------------|
+| av1.6 | conlang showcase field<br> new div backgrounds for righthandside content | dunno bro |
 | av1.5 | loading sequence<br> new background based on time | none?! |
 | av1.4 | StarShell 1.5.1<br> variables stored by `var` can be called in `arithmetic` functions with `$` headers | bg img |
 | av1.3 | StarShell 1.5.0<br> `var` operations and `var` calls | bg img |

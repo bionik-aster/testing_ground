@@ -85,6 +85,9 @@ p.fineprint:hover {
   font-size: 1em;
   color: #36d974;
 }
+p.fine {
+  font-size: 0.8em;
+}
 #loading {
   animation:blink 1.06s infinite;
   display:none;
@@ -207,6 +210,9 @@ button:hover {
   opacity: 0;
   pointer-events: none;
 }
+.conlang-showdiv {
+  text-align: left;
+}
 
 /* baseline <div> styles */
 .layout {
@@ -268,6 +274,14 @@ button:hover {
 .sdbcontent.scroll {
   animation: move 15s linear infinite;
 }
+.contentb {
+  background-color: rgba(185, 185, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin: 10px;
+  padding: 5px;
+}
 
 /* scrollbar CSS */
 .content,.sidediv {
@@ -315,4 +329,16 @@ button:hover {
 }
 @font-face{
   font-family: 'Univers 57 Condensed Oblique'; src: url('https://bionik-aster.github.io/fonts/Univers57Condensed-Oblique.otf');
+}
+@font-face{
+  font-family: 'kusakenhe'; src: url('https://bionik-aster.github.io/fonts/Kusakenhe.ttf');
+}
+
+.ikibimi {
+  font-family: 'ikibimi','Tahoma',sans-serif;
+}
+.kusakenhe {
+  font-family: 'kusakenhe','Tahoma',sans-serif;
+  font-size: 48px;
+  font-weight: 300;
 }

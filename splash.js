@@ -8,12 +8,10 @@ function cockandballs() {
       `corn :fire:`,
       `ohio??`,
       `bench communist republic`,
-      `bench communist republic`,
       `am not a commie i think`,
       `also try terraria and minecraft`,
       `texting people is my hobby, harrassing them is my passion`,
       `also try cbt`,
-      `also try cbt x2`,
       `also try cRt`,
       `who starts a conversation like that? i just sat down!`,
       `did you know the only joke my mother made was 14 years ago`,
@@ -155,7 +153,9 @@ function cockandballs() {
         `fuckass cornball btw`,
         `youve got mail`,
         `MS DOS is not the second MS OS its the first`,
-        `let that sink in`
+        `let that sink in`,
+        `tacky situation we got here`,
+        `cro is NT shkspr ngl ts pmo frfr :wilted_rose:`
     ];
 
     var rText = Math.floor(Math.random() * messages.length);
