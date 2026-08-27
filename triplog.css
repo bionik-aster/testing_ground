@@ -1,0 +1,32 @@
+html {
+    font-size: 25px;
+    background-color:azure;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    margin: 0;
+}
+.main {
+    margin-top: 10px;
+}
+.header {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 5px 15px;
+    justify-content: space-between;
+}
+.headertext p {
+    margin: 0;
+}
+.headernav a {
+    color: white;
+    text-decoration: none;
+}
+.headernav a:hover {
+    color:aquamarine;
+}

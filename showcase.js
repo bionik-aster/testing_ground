@@ -4,7 +4,7 @@ function showit() {
             id: 'KSK (1)',
             name: 'Kusakenhe',
             class: 'kusakenhe',
-            egtext: '&#x202e;xala, wasat\'qrk ta.'
+            egtext: '&#x202e;xala, kasaknxa ta.'
         },
         {
             id: 'PLK/PLS (2)',
@@ -23,6 +23,12 @@ function showit() {
             name: 'skraLubire',
             class: '',
             egtext: 'Apidir, keb eb skraLubire.'
+        },
+        {
+            id: 'ILG (5)',
+            name: 'Interlangva',
+            class: '',
+            egtext: 'Hudag, bīu Interlangva.'
         }
     ];
     const finalshow = document.getElementById('conlang-showcase');
