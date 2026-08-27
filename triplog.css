@@ -1,6 +1,6 @@
 html {
     font-size: 25px;
-    background-color:azure;
+    background-color:rgb(254, 255, 255);
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -8,8 +8,10 @@ body {
     margin: 0;
 }
 .main {
-    margin-top: 10px;
+    margin: 10px;
 }
+
+/* headers */
 .header {
     position: sticky;
     top: 0;
@@ -20,8 +22,15 @@ body {
     padding: 5px 15px;
     justify-content: space-between;
 }
+.headertext {
+    margin-left: 30px;
+}
 .headertext p {
     margin: 0;
+}
+.headernav {
+    display: flex;
+    gap: 45px;
 }
 .headernav a {
     color: white;
@@ -29,4 +38,31 @@ body {
 }
 .headernav a:hover {
     color:aquamarine;
+}
+
+/* bar */
+.container {
+    background-color: rgba(215, 215, 215, 0.65);
+    width: 80%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.prog {
+    background-color: rgb(72, 138, 252);
+    text-align: right;
+    height:30px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    text-wrap: nowrap;
+}
+
+.prog p {
+    margin-right: 7px;
+}
+@media screen and (width >= 1080px) {
+    .container {
+        width: 30%;
+    }
 }
