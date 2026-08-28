@@ -1,4 +1,4 @@
-export async function fetchWithAErrors(url, options = {}, responseType = "json") {
+async function fetchWithAErrors(url, options = {}, responseType = "json") {
   const AERRORS = {
     400: [{ code: "A002", meaning: "Parsing Error" }, { code: "A004", meaning: "Protocol violation" }, { code: "A005(3)", meaning: "Service unsupported on browser" }],
     401: [{ code: "A006", meaning: "Credentials invalid" }],
