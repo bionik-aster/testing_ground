@@ -7,6 +7,7 @@
         <meta name="description" content="Where I've been to">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/triplog.css" type="text/css">
+        <link rel="icon" href="/images/triplog_logo.png"> 
         <style>.prog-dub {width:60%;}
         .prog-bel {width:40%}
         .prog-entertainment {width:80%;}
@@ -35,9 +36,9 @@
             <h2 id="dublin">Dublin main destinations</h2>
             <ul>
                 <li>Temple Bar</li>
-                <li>Book of Kells Experience @ Trinity College Dublin</li>
                 <li>Guinness Storehouse @ St. James's Gate</li>
                 <li>[County Meath] Emerald Park</li>
+                <li>Book of Kells Experience @ Trinity College Dublin</li>
             </ul>
             <h2 id="belfast">Belfast main destinations</h2>
             <ul>
@@ -70,6 +71,16 @@
             </p>
             <br>
             <p>All in all, 8/10, would recommend.</p>
+            <button id="magnets"><p>Click me for magnet collection</p></button>
         </div>
+        <footer>
+            <p>&copy; 2026 Aster Irving</p>
+        </footer>
     </body>
+    <script>
+        const magnets = document.getElementById('magnets')
+        magnets.addEventListener('click',() => {
+            window.location.href = '../18-22/magnets/';
+        });
+    </script>
 </html>

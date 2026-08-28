@@ -3,6 +3,7 @@ so, long story short, i decided that the other website was BORING and kinda made
 # system_log
 |Version|  Log  |Known stuff-to-fix|
 |-------|-------|------------------|
+| av1.7.1 | `magnets` added to one of the triplog entries | see av1.7 |
 | av1.7 | `triplog` work in progress | `index.html` to `triplog` |
 | av1.6 | conlang showcase field<br> new div backgrounds for righthandside content | dunno bro |
 | av1.5 | loading sequence<br> new background based on time | none?! |

@@ -10,6 +10,34 @@ body {
 .main {
     margin: 10px;
 }
+button {
+    background-color: navy;
+    border-radius: 5px;
+    border-color: navy;
+    padding: 5px 20px;
+    height: auto;
+    transition: all 250ms;
+    color: white;
+    font-size: 1.1rem;
+}
+button:hover {
+    padding: 0px 5px;
+    background-color: aquamarine;
+    color: black;
+}
+button p {
+    margin: 0;
+}
+footer {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+img {
+    max-width: 80%;
+}
 
 /* headers */
 .header {
@@ -40,7 +68,7 @@ body {
     color:aquamarine;
 }
 
-/* bar */
+/* progress bar */
 .container {
     background-color: rgba(215, 215, 215, 0.65);
     width: 80%;
@@ -61,8 +89,15 @@ body {
 .prog p {
     margin-right: 7px;
 }
+/* shenanigans */
+
+
+/* flexible thingy */
 @media screen and (width >= 1080px) {
     .container {
         width: 30%;
+    }
+    img {
+        max-width: 40%;
     }
 }

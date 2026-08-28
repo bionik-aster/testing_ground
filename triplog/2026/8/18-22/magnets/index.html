@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AsterLP - triplog</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Aster Irving">
+        <meta name="description" content="Where I've been to">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/triplog.css" type="text/css">
+        <link rel="icon" href="/images/triplog_logo.png">
+    </head>
+    <body>
+        <div class="header">
+            <div class="headernav">
+                <a href="/">Home</a>
+                <a href="/triplog">Triplog Mainpage</a>
+            </div>
+            <div class="headertext">
+                <p>Aster's Triplog</p>
+            </div>
+        </div>
+        <div class="main">
+            <img src="/images/guinness_mag.png" id="guinness">
+            <p>The Guinness logo, bought at Guinness Storehouse @ St. James's Gate, 18/08/2026</p>
+            <img src="/images/emeraldpark_mag.png" id="emeraldpark">
+            <p>A view of Emerald Park, bought at Emerald Park @ County Meath, 19/08/2026</p>
+            <img src="/images/trinitycollege_mag.png" id="trinitycollege">
+            <p>Icon resembling the Brian Boru, bought at Trinity College Dublin, 20/08/2026</p>
+            <img src="/images/titanic_mag.png" id="titanicmuseum">
+            <p>An advertisement for the Titanic, bought at Titanic Museum @ Belfast, 21/08/2026</p>
+            <img src="/images/belfastcityairport_mag.png" id="belfastcityairport">
+            <p>A landscape of Belfast, bought at Belfast City Airport, 22/08/2026</p>
+            <br>
+            <button id="return"><p>See the full triplog</p></button>
+        </div>
+        <footer>
+            <p>&copy; 2026 Aster Irving</p>
+        </footer>
+    </body>
+    <script>
+        const retur = document.getElementById('return');
+        retur.addEventListener('click',()=>{
+            window.location.href = '../';
+        });
+    </script>
+</html>
