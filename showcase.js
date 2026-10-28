@@ -61,7 +61,7 @@ function showit() {
             name: '(Yanuwa) Kaneha',
             class: '',
             egtext: 'Alula, aluhi wiri Yanuwa Kaneha.',
-            ipa: '/a.lu.la wi.ɹi ja.nu.wa ka.ne.ha/'
+            ipa: '/a.lu.la a.lu.hi wi.ɹi ja.nu.wa ka.ne.ha/'
         },
         {
             id: 'AYT (9)',
