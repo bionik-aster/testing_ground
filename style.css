@@ -333,6 +333,9 @@ button:hover {
 @font-face{
   font-family: 'kusakenhe'; src: url('https://bionik-aster.github.io/fonts/Kusakenhe.ttf');
 }
+@font-face{
+  font-family: 'Charis SIL'; src: url('https://bionik-aster.github.io/fonts/CharisSIL-Regular.ttf');
+}
 
 .ikibimi {
   font-family: 'ikibimi','Tahoma',sans-serif;
@@ -341,4 +344,7 @@ button:hover {
   font-family: 'kusakenhe','Tahoma',sans-serif;
   font-size: 48px;
   font-weight: 300;
+}
+.ipa {
+  font-family: 'Charis SIL', 'Tahoma', 'Arial', serif;
 }
