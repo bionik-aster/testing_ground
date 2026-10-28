@@ -29,6 +29,36 @@ function showit() {
             name: 'Interlangva',
             class: '',
             egtext: 'Hudag, bīu Interlangva.'
+        },
+        {
+            id: 'NMK (6)',
+            name: 'Namukkon',
+            class: '',
+            egtext: 'kitta, bapu-namukkon-eohħi.'
+        },
+        {
+            id: 'LNR (7)',
+            name: 'Lénêrśke',
+            class: '',
+            egtext: 'Émer dig, jêg êhrnethan Lénêrśke.'
+        },
+        {
+            id: 'LNR-hptOR (7-H)',
+            name: 'Leaneirszke',
+            class: '',
+            egtext: 'Eamer dig, jeig eihrnethan Leaneirszke.'
+        },
+        {
+            id: 'KNH (8)',
+            name: '(Yanuwa) Kaneha',
+            class: '',
+            egtext: 'Alula, aluhi wiri Yanuwa Kaneha.'
+        },
+        {
+            id: 'AYT (9)',
+            name: 'Ayta',
+            class: '',
+            egtext: 'Hajhaj! [↓]Eusi epfhe Ayta.'
         }
     ];
     const finalshow = document.getElementById('conlang-showcase');
